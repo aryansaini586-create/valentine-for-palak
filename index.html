@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💕 For My Palak 💕</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a0a0a 0%, #2d1515 50%, #1a0a0a 100%);
+            font-family: 'Quicksand', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating Hearts Background */
+        .hearts-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .floating-heart {
+            position: absolute;
+            bottom: -50px;
+            font-size: 20px;
+            animation: floatUp 8s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        /* Main Container */
+        .container {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Glowing Card */
+        .love-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 50px 40px;
+            text-align: center;
+            max-width: 500px;
+            border: 2px solid rgba(255, 105, 135, 0.3);
+            box-shadow: 
+                0 0 60px rgba(255, 105, 135, 0.3),
+                inset 0 0 60px rgba(255, 105, 135, 0.1);
+            animation: cardGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes cardGlow {
+            0% {
+                box-shadow: 
+                    0 0 60px rgba(255, 105, 135, 0.3),
+                    inset 0 0 60px rgba(255, 105, 135, 0.1);
+            }
+            100% {
+                box-shadow: 
+                    0 0 80px rgba(255, 105, 135, 0.5),
+                    inset 0 0 80px rgba(255, 105, 135, 0.2);
+            }
+        }
+
+        /* Name Title */
+        .name-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e, #ffb4b4, #ff6b6b);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s ease-in-out infinite;
+            margin-bottom: 10px;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .subtitle {
+            color: #ffb4b4;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+        }
+
+        /* Beating Heart */
+        .big-heart {
+            font-size: 80px;
+            animation: heartbeat 1.2s ease-in-out infinite;
+            display: inline-block;
+            filter: drop-shadow(0 0 20px rgba(255, 105, 135, 0.8));
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            15% { transform: scale(1.15); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.1); }
+        }
+
+        /* Message */
+        .love-message {
+            color: #fff;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin: 30px 0;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.5s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Question */
+        .question {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #ff8e8e;
+            margin: 30px 0;
+            text-shadow: 0 0 30px rgba(255, 142, 142, 0.5);
+        }
+
+        /* Buttons */
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 15px 50px;
+            font-size: 1.2rem;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-yes {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-yes:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.6);
+        }
+
+        .btn-no {
+            background: transparent;
+            color: #888;
+            border: 2px solid #555;
+            font-size: 0.9rem;
+            padding: 10px 30px;
+        }
+
+        .btn-no:hover {
+            transform: scale(0.9);
+            opacity: 0.5;
+        }
+
+        /* Success Screen */
+        .success-screen {
+            display: none;
+            text-align: center;
+        }
+
+        .success-screen.show {
+            display: block;
+        }
+
+        .success-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            animation: bounce 0.6s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .success-message {
+            color: #fff;
+            font-size: 1.3rem;
+            line-height: 2;
+        }
+
+        .fireworks {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .initial-content {
+            transition: opacity 0.5s ease;
+        }
+
+        .initial-content.hide {
+            display: none;
+        }
+
+        /* Sparkles */
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            border-radius: 50%;
+            animation: sparkle 1.5s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Roses */
+        .rose-container {
+            position: absolute;
+            font-size: 40px;
+            opacity: 0.3;
+        }
+
+        .rose-1 { top: 10%; left: 5%; animation: sway 4s ease-in-out infinite; }
+        .rose-2 { top: 20%; right: 8%; animation: sway 5s ease-in-out infinite reverse; }
+        .rose-3 { bottom: 15%; left: 10%; animation: sway 4.5s ease-in-out infinite; }
+        .rose-4 { bottom: 25%; right: 5%; animation: sway 3.5s ease-in-out infinite reverse; }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+            .name-title { font-size: 3rem; }
+            .question { font-size: 1.8rem; }
+            .love-card { padding: 30px 20px; margin: 10px; }
+            .big-heart { font-size: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts -->
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <!-- Decorative Roses -->
+    <div class="rose-container rose-1">🌹</div>
+    <div class="rose-container rose-2">🌹</div>
+    <div class="rose-container rose-3">🌹</div>
+    <div class="rose-container rose-4">🌹</div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="love-card">
+            <!-- Initial Content -->
+            <div class="initial-content" id="initialContent">
+                <h1 class="name-title">Palak</h1>
+                <p class="subtitle">✨ MY SPECIAL ONE ✨</p>
+                
+                <div class="big-heart">❤️</div>
+                
+                <p class="love-message">
+                    Every moment with you feels like magic. ✨<br>
+                    Your smile lights up my world, and your laugh<br>
+                    is the sweetest melody I've ever heard.<br>
+                    You're not just my love, you're my best friend,<br>
+                    my confidant, and my everything. 💫
+                </p>
+
+                <h2 class="question">Will you be my Valentine? 💝</h2>
+
+                <div class="buttons">
+                    <button class="btn btn-yes" id="yesBtn">Yes! 💕</button>
+                    <button class="btn btn-no" id="noBtn">No</button>
+                </div>
+            </div>
+
+            <!-- Success Screen -->
+            <div class="success-screen" id="successScreen">
+                <h1 class="success-title">Yayyyy! 🎉💕</h1>
+                <div class="big-heart">💖</div>
+                <p class="success-message">
+                    You just made me the happiest person alive! 🥰<br><br>
+                    I promise to cherish every moment with you,<br>
+                    fill your life with love and laughter,<br>
+                    and be the best Valentine you've ever had! 💝<br><br>
+                    <strong>Forever Yours,</strong><br>
+                    <em>Your Valentine ❤️</em>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fireworks Canvas -->
+    <canvas class="fireworks" id="fireworks"></canvas>
+
+    <script>
+        // Create floating hearts
+        const heartsContainer = document.getElementById('heartsContainer');
+        const heartEmojis = ['❤️', '💕', '💖', '💗', '💓', '💘', '💝', '✨', '💫'];
+        
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 4 + 6) + 's';
+            heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            heartsContainer.appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 10000);
+        }
+
+        setInterval(createHeart, 300);
+
+        // Button interactions
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const initialContent = document.getElementById('initialContent');
+        const successScreen = document.getElementById('successScreen');
+        const canvas = document.getElementById('fireworks');
+        const ctx = canvas.getContext('2d');
+
+        // No button runs away
+        let noClickCount = 0;
+        noBtn.addEventListener('mouseover', () => {
+            const x = Math.random() * (window.innerWidth - 150);
+            const y = Math.random() * (window.innerHeight - 50);
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+            noBtn.style.zIndex = '1000';
+            noClickCount++;
+            
+            if (noClickCount > 3) {
+                noBtn.textContent = 'Please? 🥺';
+            }
+            if (noClickCount > 5) {
+                noBtn.textContent = 'Pretty please? 💕';
+            }
+            if (noClickCount > 8) {
+                noBtn.style.display = 'none';
+            }
+        });
+
+        // Yes button celebration
+        yesBtn.addEventListener('click', () => {
+            initialContent.classList.add('hide');
+            successScreen.classList.add('show');
+            
+            // Fireworks
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            let particles = [];
+            
+            function createFirework(x, y) {
+                const colors = ['#ff6b6b', '#ff8e8e', '#ffb4b4', '#fff', '#ffd700', '#ff69b4'];
+                for (let i = 0; i < 50; i++) {
+                    particles.push({
+                        x: x,
+                        y: y,
+                        vx: (Math.random() - 0.5) * 10,
+                        vy: (Math.random() - 0.5) * 10,
+                        color: colors[Math.floor(Math.random() * colors.length)],
+                        life: 100,
+                        size: Math.random() * 4 + 2
+                    });
+                }
+            }
+
+            function animate() {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                particles.forEach((p, index) => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.vy += 0.1;
+                    p.life -= 1;
+                    
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fillStyle = p.color;
+                    ctx.globalAlpha = p.life / 100;
+                    ctx.fill();
+                    ctx.globalAlpha = 1;
+                    
+                    if (p.life <= 0) {
+                        particles.splice(index, 1);
+                    }
+                });
+                
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+
+            // Create multiple fireworks
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    createFirework(
+                        Math.random() * canvas.width,
+                        Math.random() * canvas.height * 0.5
+                    );
+                }, i * 300);
+            }
+
+            // Continuous fireworks
+            setInterval(() => {
+                createFirework(
+                    Math.random() * canvas.width,
+                    Math.random() * canvas.height * 0.5
+                );
+            }, 1000);
+
+            // Burst of hearts
+            for (let i = 0; i < 30; i++) {
+                setTimeout(createHeart, i * 50);
+            }
+        });
+
+        // Initial hearts burst
+        for (let i = 0; i < 10; i++) {
+            setTimeout(createHeart, i * 200);
+        }
+    </script>
+</body>
+</html>
